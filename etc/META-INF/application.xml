@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://java.sun.com/xml/ns/javaee" 
+		xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/j2ee/application_5.xsd" 
+		version="5"
+		>
+<!--
+	J2EE application descriptor 
+	@(#) $Id: application.xml 969 2012-10-03 19:31:41Z gfis $
+	2012-03-09, Georg Fischer
+-->
+	<description>Church Calendar</description>
+	<display-name>ChurchCal</display-name>
+
+	<module>
+		<web>
+			<web-uri>churchcal.war</web-uri>
+			<context-root>/churchcal</context-root>
+		</web>
+	</module>
+</application>

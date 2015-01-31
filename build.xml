@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!--
+    ant-buildfile for commandline, web application and web service
+    @(#) $Id: build.xml 882 2012-02-12 21:09:04Z gfis $
+    2012-01-05; URIReader
+	2008-04-03: test.easter
+    2007-02-12: renamed from calwork
+    2005-11-15: copied from checkdig
+-->
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<project name="churchcal" default="all" basedir=".">
+    <property name="app.version"        value="1.5"/>
+    <property name="app.main-class"     value="org.teherba.churchcal.MainCalendar"/>
+    <import file="build-import.xml" />
+
+    <target name="generate">
+        <exec executable="perl" dir="." output="src/main/java/org/teherba/churchcal/DayMap.java">
+            <arg line="../gramword/dict/bible/perikope/holydays.pl -java" />
+        </exec>
+		<copy todir="${lib.home}">
+			<fileset dir="../numword/dist">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>
+	<!--
+		<copy todir="${src.home}/org/teherba/dbat">
+			<fileset dir="../dbat/src/main/java/org/teherba/dbat">
+				<include name="URI*.java"/>
+			</fileset>
+		</copy>
+	-->
+    </target>
+
+    <target name="bach">
+        <exec executable="perl" dir="web/bach">
+            <arg line="sundays.pl" />
+        </exec>
+    </target>
+
+    <target name="test" depends="deploy,test.command,test.servlet,test.service" />
+    <target name="test.command"><!-- run the program from the commandline -->
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.ChurchCalendar" />
+            <param name="args"  value="de ev 1947 table"       />
+        </antcall>
+    </target>
+   
+    <target name="test.servlet"><!-- call the web page -->
+        <exec executable="lynx">
+            <arg line="-dump http://localhost:8080/webapps/churchcal/servlet?language=deu&amp;variant=ev&amp;year=1947&amp;format=html"/>
+        </exec>
+    </target>
+
+    <target name="test.service"><!-- call the webservice -->
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.CalendarClient"  />
+            <param name="args"  value="de ev 1947 sql"      />
+        </antcall>
+    </target>
+
+    <target name="test.parse"><!-- parse a file with dates and names of Sun-/Holydays -->
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.DayMap" />
+            <param name="args"  value="-parse test/iso_name.tmp"       />
+        </antcall>
+    </target>
+
+    <target name="test.year"> <!-- list all Sun-/Holydays in current year -->
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.DayMap" />
+            <param name="args"  value="-year"       />
+        </antcall>
+    </target>
+
+    <target name="test.easter"> <!-- list results of 4 different Easter calculation methods -->
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.EasterCalendar" />
+        </antcall>
+    </target>
+
+    <target name="test.daylist"> <!-- dump the entire 'DayList's for 2008 and 2009 -->
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.DayList" />
+            <param name="args"  value="2008"       />
+        </antcall>
+        <antcall target="run">
+            <param name="class" value="org.teherba.churchcal.DayList" />
+            <param name="args"  value="2009"       />
+        </antcall>
+    </target>
+
+</project>

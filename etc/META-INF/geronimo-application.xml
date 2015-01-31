@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application 
+		xmlns="http://geronimo.apache.org/xml/ns/j2ee/application-2.0" 
+        xmlns:sys="http://geronimo.apache.org/xml/ns/deployment-1.2" 
+        application-name="churchcal"
+        >
+<!-- 
+	Deployment Descriptor for Apache Geronimo
+	@(#) $Id: geronimo-application.xml 969 2012-10-03 19:31:41Z gfis $
+	2012-03-09, Dr. Georg Fischer
+-->
+	<sys:environment>
+		<sys:moduleId>
+			<sys:groupId>org.teherba</sys:groupId>
+			<sys:artifactId>churchcal</sys:artifactId>
+			<sys:version>1.1</sys:version>
+			<sys:type>ear</sys:type>
+		</sys:moduleId>
+	<!-- 
+	    Don't load commons-io or fileupload from parent classloaders
+		<sys:hidden-classes>
+			<sys:filter>org.apache.commons.io</sys:filter>
+			<sys:filter>org.apache.commons.fileupload</sys:filter>
+		</sys:hidden-classes>		
+	-->
+        <sys:dependencies> 
+            <sys:dependency>
+                <sys:groupId>commons-fileupload</sys:groupId>
+                <sys:artifactId>commons-fileupload</sys:artifactId>
+                <sys:version>1.1.1</sys:version>
+                <sys:type>jar</sys:type>
+            </sys:dependency>
+            <sys:dependency>
+                <sys:groupId>commons-io</sys:groupId>
+                <sys:artifactId>commons-io</sys:artifactId>
+                <sys:version>1.2</sys:version>
+                <sys:type>jar</sys:type>
+            </sys:dependency>
+        </sys:dependencies>
+        
+		<sys:inverse-classloading />
+	</sys:environment>
+    <module>
+        <web>churchcal.war</web>
+        <web:web-app xmlns:web="http://geronimo.apache.org/xml/ns/j2ee/web-2.0.1"/>
+    </module>
+
+</application>

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# start Winstone web server for churchcal
+# @(#) $Id: start_up 883 2012-02-13 07:46:18Z gfis $
+# 
+java -jar ws_churchcal.jar --httpPort=8087 --controlPort=8089

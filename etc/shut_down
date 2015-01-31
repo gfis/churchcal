@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# stop Winstone web server for churchcal
+# @(#) $Id: shut_down 883 2012-02-13 07:46:18Z gfis $
+#
+java -cp ws_churchcal.jar winstone.tools.WinstoneControl --port=8089 --host=localhost shutdown

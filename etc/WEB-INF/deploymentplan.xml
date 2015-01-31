@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns		="http://geronimo.apache.org/xml/ns/j2ee/web-1.1" 
+         xmlns:dep	="http://geronimo.apache.org/xml/ns/deployment-1.1" 
+         >
+  <dep:environment>
+    <dep:moduleId>
+      <dep:groupId>org.teherba</dep:groupId>
+      <dep:artifactId>churchcal</dep:artifactId>
+      <dep:version>1.1</dep:version>
+      <dep:type>car</dep:type>
+    </dep:moduleId>
+    <!-- 
+         Don't load commons-io or fileupload from parent classloaders
+      -->
+    <dep:hidden-classes>
+      <dep:filter>org.apache.commons.io</dep:filter>
+      <dep:filter>org.apache.commons.fileupload</dep:filter>
+    </dep:hidden-classes>
+    <dep:inverse-classloading/>
+  </dep:environment>
+  <context-root>/churchcal</context-root>
+</web-app>

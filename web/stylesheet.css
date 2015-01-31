@@ -1,0 +1,51 @@
+/*	churchcal/stylesheet.css - Cascaded Style Sheet with colors for holydays
+	@(#) $Id: stylesheet.css 869 2012-02-01 07:12:36Z gfis $
+	2012-01-03: table with thin borders
+	2005-12-08,	Georg Fischer: copied from standard stylesheet
+*/
+body,p,h1,h2,h3,h4,dl,dd,dt,ul,ol,li,div,td,th,address,blockquote,nobr,b,i,a,br,img
+	{ font-family:Verdana,Arial,sans-serif; }
+table
+	{ background:white; border-collapse:collapse; } /* margin-top:3mm; } */
+td,th
+	{ vertical-align:top; margin:0px; 
+	  padding-top:0px; padding-bottom: 0px;padding-left:4px; padding-right:4px; 
+	  border:1px solid #aaa; }
+dt	
+	{ font-weight: bold }
+tt
+	{ font-family:Courier; }
+body
+	{ background-color:white }
+.nbord  { vertical-align:top; margin:0px; 
+	      padding-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px;
+	      border:none }
+.nbord4 { vertical-align:top; 
+		  margin-top:0px;  margin-bottom:0px;  margin-left:0px;  margin-right:0px; 
+	      padding-top:0px; padding-bottom:0px; padding-left:4px; padding-right:4px;
+	      border:none }
+.bord   { vertical-align:top; 
+		  margin-top:0px;  margin-bottom:0px;  margin-left:0px;  margin-right:0px; 
+	      padding-top:0px; padding-bottom:0px; padding-left:0px; padding-right:0px;
+	      border:1px solid #aaa }
+.error  { color:red     ; font-family:Courier; }
+.valid	{ color:darkblue; font-family:Courier; font-size:x-large; font-weight:bold; }
+/*	
+All layout attributes of a calendar page were defined in the styles below.
+Now these defaults are hard coded in BaseCalendar, but can be redefined in a customization file.
+.und { color:black         ; background-color: white       }
+.wrk { color:black         ; background-color: ghostwhite  }
+.sat { color:black         ; background-color: wheat       }
+.hwk { color:black         ; background-color: khaki       }
+.sun { color:black         ; background-color: gold		   }
+.fer { color:white         ; background-color: tomato      }
+.hol { color:white         ; background-color: crimson     }
+                                                           
+.red { color:white         ; background-color: crimson     }
+.vio { color:white         ; background-color: darkviolet  }
+.blk { color:white         ; background-color: black       }
+.wht { color:black         ; background-color: white       }
+.grn { color:white         ; background-color: forestgreen }
+*/
+
+.des { font-size: 80% }
