@@ -27,7 +27,7 @@ package org.teherba.churchcal;
 import  org.teherba.churchcal.Customizer;
 import  org.teherba.churchcal.Day;
 import  org.teherba.churchcal.DayMap;
-import  org.teherba.dbat.URIReader;
+import  org.teherba.common.URIReader;
 import  org.teherba.numword.BaseSpeller;
 import  org.teherba.numword.SpellerFactory;
 import  java.io.Writer;

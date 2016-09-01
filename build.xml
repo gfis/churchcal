@@ -2,8 +2,9 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 882 2012-02-12 21:09:04Z gfis $
+    2016-09-01: properties ${tomcat.*}
     2012-01-05; URIReader
-	2008-04-03: test.easter
+    2008-04-03: test.easter
     2007-02-12: renamed from calwork
     2005-11-15: copied from checkdig
 -->
@@ -25,24 +26,19 @@
 <project name="churchcal" default="all" basedir=".">
     <property name="app.version"        value="1.5"/>
     <property name="app.main-class"     value="org.teherba.churchcal.MainCalendar"/>
+    <property name="tomcat.base"        value="/var/lib/tomcat" />
+    <property name="tomcat.home"        value="/usr/share/tomcat" />
     <import file="build-import.xml" />
 
     <target name="generate">
         <exec executable="perl" dir="." output="src/main/java/org/teherba/churchcal/DayMap.java">
             <arg line="../gramword/dict/bible/perikope/holydays.pl -java" />
         </exec>
-		<copy todir="${lib.home}">
-			<fileset dir="../numword/dist">
-				<include name="*.jar"/>
-			</fileset>
-		</copy>
-	<!--
-		<copy todir="${src.home}/org/teherba/dbat">
-			<fileset dir="../dbat/src/main/java/org/teherba/dbat">
-				<include name="URI*.java"/>
-			</fileset>
-		</copy>
-	-->
+        <copy todir="${lib.home}">
+            <fileset dir="../numword/dist">
+                <include name="*.jar"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="bach">
@@ -58,7 +54,7 @@
             <param name="args"  value="de ev 1947 table"       />
         </antcall>
     </target>
-   
+
     <target name="test.servlet"><!-- call the web page -->
         <exec executable="lynx">
             <arg line="-dump http://localhost:8080/webapps/churchcal/servlet?language=deu&amp;variant=ev&amp;year=1947&amp;format=html"/>
