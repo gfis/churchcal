@@ -1,0 +1,96 @@
+# Eingabedatei fuer churchcal
+# @(#) $Id$
+# 2012-10-03, Dr. Georg Fischer: gem. Plan v. Pfr. Hansen
+#
+title|Evangelische Kirchengemeinde Kenzingen - Kalender 2012
+# Ferien 2012 BW: 
+fer|24|12|31|12|
+# Gottesdienst
+term|23|09|10:00|Taiz&eacute;-Lieder
+term|29|09|10:00|Vorstellung d.Konf.
+term|07|10|10:00|GGK, AM, Kiga
+term|14|10|10:00|KGR gestaltet GD
+term|21|10|10:00|Posaunenchor, AM
+term|28|10|19:00|GGK
+term|04|11|10:00|AM
+term|11|11|10:00|Konf. gestalten GD
+term|18|11|10:00|AM
+term|21|11|19:00|Gottesdienst
+term|25|11|     |GGK
+term|25|11|19:00|Kantaten-GD
+term|02|12|10:00|AM, TonArt
+term|09|12|10:00|GGK m.Kiga
+term|16|12|10:00|Posaunenchor
+term|23|12|10:00|GKSZ? Flötenkreis
+term|24|12|16:00|Krippenspiel
+term|24|12|17:30|Christvesper + Kantorei
+term|25|12|10:00|AM, Trompete       
+term|30|12|19:00|Jahresschluss AM
+
+# Kinder
+term|27|09|     |Kinderbibeltag
+term|11|11|09:45|Kigo-Treff
+term|16|12|09:45|Kigo-Treff
+term|10|11|     |Krippenspielprobe
+term|17|11|     |Krippenspielprobe
+term|24|11|     |Krippenspielprobe
+term|01|12|     |Krippenspielprobe
+term|08|12|     |Krippenspielprobe
+term|15|12|     |Krippenspielprobe
+term|22|12|     |Krippenspielprobe
+
+# Musik
+term|09|12|     |Konzert TonArt
+
+# Konfirmanden
+term|17|09|     |Elternabend
+term|19|09|     |Konfi-Unterricht 
+term|26|09|     |Konfi-Unterricht 
+term|10|10|     |Konfi-Unterricht 
+term|17|10|     |Konfi-Unterricht 
+term|17|10|18:00|KU-Treff         
+term|19|10|     |Konfi-Freizeit   
+term|20|10|     |Konfi-Freizeit   
+term|21|10|     |Konfi-Freizeit   
+term|24|10|     |Konfi-Unterricht 
+term|07|11|     |Konfi-Unterricht 
+term|14|11|17:00|KU-Treff         
+term|21|11|     |Konfi-Unterricht 
+term|28|11|     |Konfi-Unterricht 
+term|05|12|     |Konfi-Unterricht 
+term|12|12|     |Konfi-Unterricht 
+term|19|12|17:00|KU-Treff?          
+
+# Kirchengemeinderat
+term|09|10|     |KGR + kath.PGR      
+term|23|10|     |KGR          
+term|20|11|     |KGR          
+term|11|12|     |KGR gemütlich
+
+# Seniorenkreis Dienstags 15:00
+term|09|10|15:00|Senioren-Ausflug        
+term|23|10|15:00|Seniorenkreis
+term|06|11|15:00|Seniorenkreis
+term|20|11|15:00|Seniorenkreis
+term|04|12|15:00|Sen.Adv.kaffee
+term|18|12|15:00|Senioren-Ausflug
+
+# Gottesdienste Kreisseniorenzentrum
+term|12|10|15:00|GKSZ                    
+term|26|10|15:00|GKSZ                    
+term|09|11|15:00|GKSZ                    
+term|23|11|15:00|GKSZ                    
+term|07|12|15:00|GKSZ                    
+
+# Ökum. Bibelgesprächskreis
+term|17|10|20:00|Ök.Bibelgkr.
+term|21|11|20:00|Ök.Bibelgkr.
+term|19|12|20:00|Ök.Bibelg.b.RPF
+
+# andere Kreise und Events
+term|06|10|14:30|Ausfl.m.Sundhouse
+term|14|10|     |Gem.versamml. 
+term|10|10|     |Kiga-Elternabend 
+term|07|11|     |Kiga-Laternenfest
+term|14|11|19:30|Gem.-Beirat       
+term|28|11|     |Besuchsdienstkr.  
