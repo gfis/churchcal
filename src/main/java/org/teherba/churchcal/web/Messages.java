@@ -1,5 +1,6 @@
 /*  ViewMessage.java - show the language specific message text
  *  @(#) $Id: ViewMessage.java 882 2012-02-12 21:09:04Z gfis $
+ *  2016-09-03: use BasePage
  *  2012-02-11: copied from message.jsp    
  *  2012-02-07: message 007
  *  2008-04-03: 1583..4099
@@ -69,16 +70,16 @@ public class Messages implements Serializable {
         basePage.add("de", smess, "{parm}Git Repository</a>");
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"api\"         href=\"docs/api/index.html\">");
-        basePage.add("en", smess, "{parm}Java API</a>");
-        basePage.add("de", smess, "{parm}Java API</a>");
+        basePage.add("en", smess, "{parm}Java API</a>, ");
+        basePage.add("de", smess, "{parm}Java API</a>, ");
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"manifest\"    href=\"servlet?view=manifest\">");
-        basePage.add("en", smess, "{parm}Manifest</a>");
-        basePage.add("de", smess, "{parm}Manifest</a>");
+        basePage.add("en", smess, "{parm}Manifest</a>, ");
+        basePage.add("de", smess, "{parm}Manifest</a>, ");
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"license\"     href=\"servlet?view=license\">");
-        basePage.add("en", smess, "{parm}License</a>");
-        basePage.add("de", smess, "{parm}Lizenz</a>");
+        basePage.add("en", smess, "{parm}License</a> ");
+        basePage.add("de", smess, "{parm}Lizenz</a> ");
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"notice\"      href=\"servlet?view=notice\">");
         basePage.add("en", smess, "{parm}References</a>");

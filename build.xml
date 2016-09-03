@@ -2,7 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 882 2012-02-12 21:09:04Z gfis $
-    2016-09-01: properties ${tomcat.*}
+    2016-09-01: properties ${tomcat.*}; core.jar
     2012-01-05; URIReader
     2008-04-03: test.easter
     2007-02-12: renamed from calwork
@@ -39,6 +39,17 @@
                 <include name="*.jar"/>
             </fileset>
         </copy>
+    </target>
+
+    <target name="core.jar">
+        <!-- without libraries, without web files 
+        <jar jarfile="${dist.home}/${ant.project.name}-core.jar"
+                basedir="${build.classes}"
+                manifest="${build.classes}/META-INF/MANIFEST.MF"
+                excludes="web/** **/web/*.class **/format/*.class **/*Servlet.class"
+                >
+        </jar>
+        -->
     </target>
 
     <target name="bach">

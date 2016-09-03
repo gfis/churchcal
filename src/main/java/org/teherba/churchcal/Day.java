@@ -110,7 +110,6 @@ public class Day {
     } // Constructor(3)
 
     /** Constructor which sets name and formula only.
-     *  The calendar date should later be set by {@link DayMap#calculateHolyDay}.
      *  @param name code for the name like "trin4", "east0"
      *  @param formula code for the calculation of the day like "anc1+49", "fix=06-29"
      */
@@ -120,7 +119,6 @@ public class Day {
     } // Constructor(2)
 
     /** Constructor which sets name, formula, abbreviation and description.
-     *  The calendar date should later be set by {@link DayMap#calculateHolyDay}.
      *  @param name code for the name like "trin4", "east0"
      *  @param formula code for the calculation of the day like "anc1+49", "fix=06-29"
      *  @param abbr abbreviation of the description of the day

@@ -1,6 +1,6 @@
 /*  Servlet interface to class WorkCalendar
     @(#) $Id: CalendarServlet.java 901 2012-03-10 18:13:36Z gfis $
- *  2016-09-01: with BasePage; without session
+ *  2016-09-03: with BasePage; without session
     2012-03-08: uploaded files go to java.io.tmpdir
     2012-02-10: all JSPs replaced by View*.java
     2012-02-06: BaseCalendar, read customization file's name from form fields
@@ -40,12 +40,10 @@ import  java.util.Iterator;
 import  java.util.List;
 import  javax.servlet.RequestDispatcher;
 import  javax.servlet.ServletConfig;
-import  javax.servlet.ServletContext;
 import  javax.servlet.ServletException;
 import  javax.servlet.http.HttpServlet;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  javax.servlet.http.HttpSession;
 import  org.apache.commons.fileupload.FileItem;
 import  org.apache.commons.fileupload.FileItemFactory;
 import  org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -111,8 +109,6 @@ public class CalendarServlet extends HttpServlet {
      *  @param response response with writer
      */
     public void generateResponse(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-
         String sourceEncoding = "ISO-8859-1";
         String targetEncoding = "UTF-8";
         String view           = null;
@@ -152,7 +148,6 @@ public class CalendarServlet extends HttpServlet {
                         if (item.isFormField()) {
                             String name  = item.getFieldName();
                             String value = item.getString();
-                            session.setAttribute(name, value);
                             if (false) {
                             } else if (name.equals("view"       )) { view       = value;
                             } else if (name.equals("format"     )) { format     = value;
@@ -175,7 +170,6 @@ public class CalendarServlet extends HttpServlet {
                 } else { // "customization file too long (&gt; 8 kB)"
                     newPage = "message";
                     basePage.writeMessage(request, response, language, new String[] { "407", String.valueOf(MAX_SIZE) });
-                    // session.setAttribute("messno"  , "007"); 
                 }
                 // isMultipart
             }
@@ -189,7 +183,6 @@ public class CalendarServlet extends HttpServlet {
                 BaseCalendar calendar = (new CalendarFactory()).getCalendar(lang3, variant, tabYear, customization);
                 calendar.setOption("month1", month1);
                 tabYear  = calendar.getYear();
-                session.setAttribute("year", String.valueOf(tabYear));
 
                 if (false) {
                 } else if (calendar == null) { // invalid variant
@@ -236,20 +229,13 @@ public class CalendarServlet extends HttpServlet {
                         basePage.writeMessage(request, response, language, new String[] { "401", "format", format });
                     }
     
-                    if (! newPage.equals("message")) { // valid input field values
-                        session.setAttribute("calendar" , calendar);
-                        session.setAttribute("format"   , format);
-                        session.setAttribute("variant"  , variant);
-                        session.setAttribute("year"     , String.valueOf(tabYear));
-                        session.setAttribute("month1"   , String.valueOf(month1));
-                    }
                 } // no error
 
             } else if (view.equals("license")
                     || view.equals("manifest")
                     || view.equals("notice")
                     ) {
-                (new MetaInfPage    ()).showMetaInf (request, response, basePage, language, view);
+                (new MetaInfPage    ()).showMetaInf (request, response, basePage, language, view, this);
 
             } else { // invalid view
                 basePage.writeMessage(request, response, language, new String[] { "401", "view", view });
