@@ -34,15 +34,17 @@
         <exec executable="perl" dir="." output="src/main/java/org/teherba/churchcal/DayMap.java">
             <arg line="../gramword/dict/bible/perikope/holydays.pl -java" />
         </exec>
+    <!--
         <copy todir="${lib.home}">
             <fileset dir="../numword/dist">
                 <include name="*.jar"/>
             </fileset>
         </copy>
+    -->
     </target>
 
     <target name="core.jar">
-        <!-- without libraries, without web files 
+        <!-- without libraries, without web files
         <jar jarfile="${dist.home}/${ant.project.name}-core.jar"
                 basedir="${build.classes}"
                 manifest="${build.classes}/META-INF/MANIFEST.MF"
