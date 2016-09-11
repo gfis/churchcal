@@ -1,0 +1,26 @@
+# Collection of Testcases for churchcal
+# @(#) $Id$
+# 2016-09-11, Dr. Georg Fischer
+#-----------------------------------
+# Caution:
+# (1) Adjust the following line: URL where FloDskIm was deployed
+URL=http://localhost:8080/churchcal/servlet
+# (2) Adjust the following line: default commandline arguments
+ARGS=
+#======================================================================
+PACKAGE=org.teherba.churchcal
+
+TEST US01 
+CALL MainCalendar
+
+#--------
+# Commandline functions
+
+TEST FM01
+CALL MainCalendar deu ev -s 1947 table
+
+#--------
+# Web functions
+
+TEST WW01
+HTTP format=html lang3=deu variant=tr month1=1 year=1947

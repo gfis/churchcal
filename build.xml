@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 882 2012-02-12 21:09:04Z gfis $
+    2016-09-11: fill.lib
     2016-09-01: properties ${tomcat.*}; core.jar
     2012-01-05; URIReader
     2008-04-03: test.easter
@@ -52,6 +53,18 @@
                 >
         </jar>
         -->
+    </target>
+
+    <target name="fill.lib">
+        <copy todir="${lib.home}">
+            <fileset dir="${tomcat.base}/openlib">
+                <include name="common-core.jar" />
+                <include name="commons-fileupload-1.2.2.jar" />
+                <include name="commons-io-2.1.jar" />
+                <include name="log4j-1.2.17.jar" />
+                <include name="numword-core.jar" />
+            </fileset>
+        </copy>
     </target>
 
     <target name="bach">
