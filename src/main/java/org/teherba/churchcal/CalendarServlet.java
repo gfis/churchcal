@@ -1,13 +1,14 @@
 /*  Servlet interface to class WorkCalendar
-    @(#) $Id: CalendarServlet.java 901 2012-03-10 18:13:36Z gfis $
+ *  @(#) $Id: CalendarServlet.java 901 2012-03-10 18:13:36Z gfis $
+ *  2016-10-03: getContentLength was deprecated
  *  2016-09-03: with BasePage; without session
-    2012-03-08: uploaded files go to java.io.tmpdir
-    2012-02-10: all JSPs replaced by View*.java
-    2012-02-06: BaseCalendar, read customization file's name from form fields
-    2008-03-31: call XML
-    2007-02-12: renamed from calwork
-    2007-01-12: TRINITATIS
-    2005-12-02, Georg Fischer: copied from numword
+ *  2012-03-08: uploaded files go to java.io.tmpdir
+ *  2012-02-10: all JSPs replaced by View*.java
+ *  2012-02-06: BaseCalendar, read customization file's name from form fields
+ *  2008-03-31: call XML
+ *  2007-02-12: renamed from calwork
+ *  2007-01-12: TRINITATIS
+ *  2005-12-02, Georg Fischer: copied from numword
 */
 /*
  * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -122,7 +123,7 @@ public class CalendarServlet extends HttpServlet {
         String customization  = null; // all lines of the customization file, length is limited to MAX_SIZE
         String infile         = "";
         int    tabYear        = 0;
-        
+
         try {
             boolean isMultipart = ServletFileUpload.isMultipartContent(request);
             if (! isMultipart) {
@@ -134,7 +135,7 @@ public class CalendarServlet extends HttpServlet {
                 month1      = basePage.getInputField(request, "month1"  , "1");
             } else { // isMultipart
                 ServletRequestContext context = new ServletRequestContext(request);
-                if (context.getContentLength() <= MAX_SIZE ) {
+                if (context.contentLength() <= MAX_SIZE) {
                     DiskFileItemFactory fuFactory = new DiskFileItemFactory(); // Create a factory for disk-based file items
                     fuFactory.setSizeThreshold(MAX_SIZE);
                     fuFactory.setRepository(new File(System.getProperty("java.io.tmpdir")));
@@ -178,7 +179,7 @@ public class CalendarServlet extends HttpServlet {
             } else if (view == null || view.length() == 0 || view.equals("index")) {
                 (new IndexPage()).forward(request, response, basePage, language
                         , format, lang3, variant, formYear, month1, infile);
-            
+
             } else if (view.equals("show")) { // 2nd request
                 BaseCalendar calendar = (new CalendarFactory()).getCalendar(lang3, variant, tabYear, customization);
                 calendar.setOption("month1", month1);
@@ -228,7 +229,7 @@ public class CalendarServlet extends HttpServlet {
                         newPage = "message";
                         basePage.writeMessage(request, response, language, new String[] { "401", "format", format });
                     }
-    
+
                 } // no error
 
             } else if (view.equals("license")

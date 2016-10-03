@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
 <meta name="robots" content="noindex, nofollow" />
-<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<link rel="stylesheet" title="common" type="text/css" href="stylesheet.css" />
 <title>ChurchCal Main Page</title>
 </head>
 <body>
@@ -1249,6 +1249,7 @@
 </table><!--year-->
 </<body>
 </html>
+<!-- language="en", features="quest" -->
 <p><span style="font-size:small">
 Questions, remarks: email to  <a href="mailto:punctum@punctum.com?&subject=ChurchCal">Dr. Georg Fischer</a></span></p>
 </body></html>
