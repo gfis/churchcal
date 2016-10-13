@@ -1,6 +1,7 @@
 /*  Class for the properties of a specific calendar year,
     with 4 methods for the calculation of Easter Sunday.
     @(#) $Id: EasterCalendar.java 969 2012-10-03 19:31:41Z gfis $
+ *  2016-10-13: less imports, no try..catch
     2012-10-03: without import DayMap
     2008-04-09: splitted into BaseCalendar and EasterCalendar
     2008-04-03: year 1583..4099, renamed from BaseCalendar
@@ -30,10 +31,7 @@
  */
 package org.teherba.churchcal;
 import  org.teherba.churchcal.BaseCalendar;
-import  org.teherba.churchcal.Day;
 import  java.util.Calendar;
-import  java.util.regex.Matcher;
-import  java.util.regex.Pattern;
 import  org.apache.log4j.Logger;
 
 /** Class storing the properties of a specific sun (christian) calendar year,
@@ -50,16 +48,16 @@ public class EasterCalendar extends BaseCalendar {
     /** log4j logger (category) */
     protected Logger log;
 
-    /** index of number of day in year for 1st Sunday after Epiphanias 
-        (Holy 3 Kings) 
+    /** index of number of day in year for 1st Sunday after Epiphanias
+        (Holy 3 Kings)
     */
     protected static final int EPIPHAN1 = 0;
-    /** index of number of day in year for Easter Sunday 
+    /** index of number of day in year for Easter Sunday
         (first Sunday after first full moon after spring equinox)
     */
     protected static final int EASTER   = 1;
-    /** index of number of day in year for 1st of Advent 
-        (4th of Advent is last Sunday before or on Dec. 24th) 
+    /** index of number of day in year for 1st of Advent
+        (4th of Advent is last Sunday before or on Dec. 24th)
     */
     protected static final int ADVENT1  = 2;
 
@@ -100,7 +98,7 @@ public class EasterCalendar extends BaseCalendar {
     public void initialize() {
         super.initialize();
     } // initialize
-    
+
     /** Sets the names of special days in the year and their properties,
      *  sometimes depending on the current confession.
      *  This method is pseudo-abstract and will be overwritten by subclasses.
@@ -182,13 +180,13 @@ public class EasterCalendar extends BaseCalendar {
         int m, n, p, q, r, x, y, a, b, c, d, e;
 
         if (false) {
-        } else if (eyear <= 1699)  { m = 22; n = 2; 
-        } else if (eyear <= 1799)  { m = 23; n = 3; 
-        } else if (eyear <= 1899)  { m = 23; n = 4; 
-        } else if (eyear <= 2099)  { m = 24; n = 5; 
-        } else if (eyear <= 2199)  { m = 24; n = 6; 
-        } else if (eyear <= 2299)  { m = 25; n = 0; 
-        } else                     { m = 25; n = 0; 
+        } else if (eyear <= 1699)  { m = 22; n = 2;
+        } else if (eyear <= 1799)  { m = 23; n = 3;
+        } else if (eyear <= 1899)  { m = 23; n = 4;
+        } else if (eyear <= 2099)  { m = 24; n = 5;
+        } else if (eyear <= 2199)  { m = 24; n = 6;
+        } else if (eyear <= 2299)  { m = 25; n = 0;
+        } else                     { m = 25; n = 0;
         } // but out of range
         a  = eyear % 19;
         b  = eyear %  4;
@@ -259,43 +257,43 @@ public class EasterCalendar extends BaseCalendar {
      *  For BASIC, all expressions (a \ b) must be written as INT(A/B)
     <pre>
         Sub EasterDate (d, m, y)
-        
+
         ' EASTER DATE CALCULATION FOR YEARS 1583 TO 4099
-        
+
         ' y is a 4 digit year 1583 to 4099
         ' d returns the day of the month of Easter
         ' m returns the month of Easter
-        
+
         ' Easter Sunday is the Sunday following the Paschal Full Moon
         ' (PFM) date for the year
-        
+
         ' This algorithm is an arithmetic interpretation of the 3 step
         ' Easter Dating Method developed by Ron Mallen 1985, as a vast
         ' improvement on the method described in the Common Prayer Book
-        
+
         ' Because this algorithm is a direct translation of the
         ' official tables, it can be easily proved to be 100% correct
-        
+
         ' This algorithm derives values by sequential inter-dependent
         ' calculations, so ... DO NOT MODIFY THE ORDER OF CALCULATIONS!
-        
+
         ' The \ operator may be unfamiliar - it means integer division
         ' for example, 30 \ 7 = 4 (the remainder is ignored)
-        
+
         ' All variables are integer data types
-        
+
         ' It's free!  Please do not modify code or comments!
         ' ==========================================================
-        
+
            Dim FirstDig, Remain19, temp    'intermediate results
            Dim tA, tB, tC, tD, tE          'table A to E results
-        
+
            FirstDig = y \ 100              'first 2 digits of year
            Remain19 = y Mod 19             'remainder of year / 19
-        
+
         ' calculate PFM date
            temp = (FirstDig - 15) \ 2 + 202 - 11 * Remain19
-            
+
            Select Case FirstDig
               Case 21, 24, 25, 27 To 32, 34, 35, 38
                  temp = temp - 1
@@ -303,24 +301,24 @@ public class EasterCalendar extends BaseCalendar {
                  temp = temp - 2
            End Select
            temp = temp Mod 30
-        
+
            tA = temp + 21
            If temp = 29 Then tA = tA - 1
            If (temp = 28 And Remain19 > 10) Then tA = tA - 1
-        
+
         'find the next Sunday
            tB = (tA - 19) Mod 7
-            
+
            tC = (40 - FirstDig) Mod 4
            If tC = 3 Then tC = tC + 1
            If tC &gt; 1 Then tC = tC + 1
-                
+
            temp = y Mod 100
            tD = (temp + temp \ 4) Mod 7
-            
+
            tE = ((20 - tB - tC - tD) Mod 7) + 1
            eday = tA + tE
-        
+
         'return the date
            If d &gt; 31 Then
               d = d - 31
@@ -328,7 +326,7 @@ public class EasterCalendar extends BaseCalendar {
            Else
               m = 3
            End If
-        
+
         End Sub
     </pre>
     *  @param eyear year for which the date of Easter sunday should be computed.
@@ -337,13 +335,13 @@ public class EasterCalendar extends BaseCalendar {
         int firstDig, remain19, temp;    // intermediate results
         int tA, tB, tC, tD, tE;          // table A to E results
         int y = eyear;
-        
+
         firstDig = y / 100;              // first 2 digits of year
         remain19 = y % 19;               // remainder of year / 19
-        
+
         //  calculate PFM date
         temp = (firstDig - 15) / 2 + 202 - 11 * remain19;
-            
+
         switch (firstDig) {
             case 21:
             case 24:
@@ -366,11 +364,11 @@ public class EasterCalendar extends BaseCalendar {
             case 40:
                temp = temp - 2;
                break;
-            default: 
+            default:
                 break;
-        } // switch firstDig 
+        } // switch firstDig
         temp = temp % 30;
-        
+
         tA = temp + 21;
         if (temp == 29) {
             tA = tA - 1;
@@ -380,7 +378,7 @@ public class EasterCalendar extends BaseCalendar {
         }
         // find the next Sunday
         tB = (tA - 19) % 7;
-           
+
         tC = (40 - firstDig) % 4;
         if (tC == 3) {
             tC = tC + 1;
@@ -388,13 +386,13 @@ public class EasterCalendar extends BaseCalendar {
         if (tC > 1) {
             tC = tC + 1;
         }
-                
+
         temp = y % 100;
         tD = (temp + temp / 4) % 7;
-            
+
         tE = ((20 - tB - tC - tD) % 7) + 1;
         eday = tA + tE;
-        
+
         // return the date
         if (eday > 31) {
             eday = eday - 31;
@@ -494,5 +492,5 @@ public class EasterCalendar extends BaseCalendar {
         EasterCalendar easterCalendar = new EasterCalendar();
         easterCalendar.testEaster();
     } // main
-    
+
 } // EasterCalendar
