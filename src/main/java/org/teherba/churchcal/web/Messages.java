@@ -1,7 +1,8 @@
 /*  ViewMessage.java - show the language specific message text
  *  @(#) $Id: ViewMessage.java 882 2012-02-12 21:09:04Z gfis $
+ *  2017-05-29: javadoc 1.8
  *  2016-09-03: use BasePage
- *  2012-02-11: copied from message.jsp    
+ *  2012-02-11: copied from message.jsp
  *  2012-02-07: message 007
  *  2008-04-03: 1583..4099
  *  2005-08-18, Georg Fischer
@@ -31,7 +32,6 @@ import  java.io.Serializable;
  *  <li>en - English</li>
  *  <li>de - German</li>
  *  </ul>
- *  <p />
  *  @author Dr. Georg Fischer
  */
 public class Messages implements Serializable {
@@ -41,7 +41,7 @@ public class Messages implements Serializable {
      */
     public Messages() {
     } // Constructor
-    
+
     /** Sets the application-specific error message texts
      *  @param basePage reference to the hash for message texts
      */
@@ -49,6 +49,11 @@ public class Messages implements Serializable {
         String appLink = "<a href=\"servlet?view=index\">" + basePage.getAppName() + "</a>";
         //--------
         basePage.add("en", "001", appLink);
+        basePage.add("en", "002"
+                , " <a href=\"mailto:punctum@punctum.com"
+                + "?&subject=" + basePage.getAppName()
+                + "\">Dr. Georg Fischer</a>"
+                );
         //--------
         String laux = basePage.LANG_AUX;  // pseudo language code for links to auxiliary information
         int imess   = basePage.START_AUX; // start of messages    for links to auxiliary information
@@ -91,7 +96,7 @@ public class Messages implements Serializable {
         basePage.add("en", "404", "Year <em>{parm}</em> not in the range 1583..4099");
         basePage.add("de", "404", "Jahr <em>{parm}</em> nicht im Bereich 1583..4099");
         //--------
-        basePage.add("en", "405", "Unknown format <em>{parm}</em>"); 
+        basePage.add("en", "405", "Unknown format <em>{parm}</em>");
         basePage.add("de", "405", "Unbekanntes Format <em>{parm}</em>");
         //--------
         basePage.add("en", "406", "Request without a file upload field");
@@ -106,12 +111,12 @@ public class Messages implements Serializable {
     // Main method
     //================
 
-    /** Test driver 
+    /** Test driver
      *  @param args language code: "en", "de"
      */
     public static void main(String[] args) {
         Messages help = new Messages();
         System.out.println("no messages");
     } // main
-    
+
 } // Messages

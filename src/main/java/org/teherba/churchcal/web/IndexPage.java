@@ -1,5 +1,6 @@
 /*  IndexPage.java - replacement for index.jsp
  *  @(#) $Id: IndexPage.java 882 2012-02-12 21:09:04Z gfis $
+ *  2017-05-29: javadoc 1.8
  *  2012-02-11, Georg Fischer: copied from index.jsp
  */
 /*
@@ -54,6 +55,12 @@ public class IndexPage {
      *  @param response response with writer
      *  @param basePage refrence to common methods and error messages
      *  @param language 2-letter code en, de etc.
+     *  @param format html, ical, java, sql etc.
+     *  @param lang3  language of calendar to be shown
+     *  @param variant pol, ev, tr, rk etc.
+     *  @param year base year of calendar to be shown
+     *  @param month1 starting month
+     *  @param infile configuration file
      */
     public void forward(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage
@@ -66,7 +73,7 @@ public class IndexPage {
             , String infile
             ) {
         try {
-        	
+
             PrintWriter out = basePage.writeHeader(request, response, language);
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
             out.write("</head>\n<body>\n");

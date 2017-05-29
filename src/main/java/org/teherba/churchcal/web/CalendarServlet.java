@@ -1,5 +1,6 @@
 /*  Servlet interface to class WorkCalendar
  *  @(#) $Id: CalendarServlet.java 901 2012-03-10 18:13:36Z gfis $
+ *  2017-05-29: javadoc 1.8
  *  2016-10-03: getContentLength was deprecated
  *  2016-09-03: with BasePage; without session
  *  2012-03-08: uploaded files go to java.io.tmpdir
@@ -26,7 +27,7 @@
  * limitations under the License.
  */
 
-package org.teherba.churchcal;
+package org.teherba.churchcal.web;
 import  org.teherba.churchcal.CalendarFactory;
 import  org.teherba.churchcal.BaseCalendar;
 import  org.teherba.churchcal.web.IndexPage;
@@ -75,7 +76,7 @@ public class CalendarServlet extends HttpServlet {
     /** Called by the servlet container to indicate to a servlet
      *  that the servlet is being placed into service.
      *  @param config object containing the servlet's configuration and initialization parameters
-     *  @throws ServletException
+     *  @throws ServletException for servlet errors
      */
     public void init(ServletConfig config) throws ServletException {
         super.init(config); // ???
@@ -87,7 +88,7 @@ public class CalendarServlet extends HttpServlet {
     /** Processes an http GET request
      *  @param request request with header fields
      *  @param response response with writer
-     *  @throws IOException
+     *  @throws IOException for IO errors
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         generateResponse(request, response);
@@ -96,7 +97,7 @@ public class CalendarServlet extends HttpServlet {
     /** Processes an http POST request
      *  @param request request with header fields
      *  @param response response with writer
-     *  @throws IOException
+     *  @throws IOException for IO errors
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         generateResponse(request, response);

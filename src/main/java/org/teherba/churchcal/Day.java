@@ -1,8 +1,9 @@
 /*  Properties of a single day in a calendar year
     @(#) $Id: Day.java 974 2013-01-23 11:38:57Z gfis $
+ *  2017-05-29: javadoc 1.8
     2012-01-04: TreeMap appointments
     2011-09-12: addAttributes -> orAttributes
-    2008-03-31: abbreviation    
+    2008-03-31: abbreviation
     2007-03-09: properties 'name' and 'formula' with getters/setters
     2007-02-12: renamed from calwork
     2007-02-09: no tabs; *Ilse Ritter
@@ -32,15 +33,15 @@ import  java.util.Iterator;
 import  java.util.TreeMap;
 
 /** Stores all properties of a single day in a calendar year.
- *  Citation from http://de.wikipedia.org/wiki/Woche#Z.C3.A4hlweise_nach_DIN_1355.2FISO_8601 
+ *  Citation from http://de.wikipedia.org/wiki/Woche#Z.C3.A4hlweise_nach_DIN_1355.2FISO_8601
  *  <pre>
 Zählweise nach DIN 1355/ISO 8601 [Bearbeiten]
 
-Die deutschsprachige Kalender-Industrie hält sich ausnahmslos an die internationale Norm ISO 8601 (1973), 
-die als letzten Tag der Woche den Sonntag bestimmt, statt des Samstags/Sonnabends/Sabbats, 
+Die deutschsprachige Kalender-Industrie hält sich ausnahmslos an die internationale Norm ISO 8601 (1973),
+die als letzten Tag der Woche den Sonntag bestimmt, statt des Samstags/Sonnabends/Sabbats,
 wie es in der jüdisch-christlich-islamischen Tradition üblich ist.
 
-Im Geltungsbereich der Normen des DIN Deutschen Instituts für Normung e. V. 
+Im Geltungsbereich der Normen des DIN Deutschen Instituts für Normung e. V.
 werden seit 1976 durch Normung folgende Regeln empfohlen:
 
     Jeden Montag und nur montags beginnt eine neue Kalenderwoche.
@@ -51,12 +52,12 @@ Aus diesen Punkten ergeben sich folgende Eigenschaften:
     Jedes Jahr hat entweder 52 oder 53 Kalenderwochen.
     Ein Jahr hat genau dann 53 Kalenderwochen, wenn es mit einem Donnerstag beginnt oder endet:
         Ein Normaljahr mit 53 Wochen beginnt und endet an einem Donnerstag.
-        Ein Schaltjahr mit 53 Wochen beginnt entweder an einem Mittwoch und endet somit 
+        Ein Schaltjahr mit 53 Wochen beginnt entweder an einem Mittwoch und endet somit
         mit Donnerstag oder beginnt an einem Donnerstag und endet an einem Freitag.
     Der 4. Januar liegt immer in Kalenderwoche 1.
     Der 29., 30. und 31. Dezember können schon zur ersten Kalenderwoche des Folgejahres gehören.
     Der 1., 2. und 3. Januar können noch in der letzten Kalenderwoche des Vorjahres liegen.
-    Der Donnerstag ist ausschlaggebend, zu welchem Jahr die Woche gezählt wird. 
+    Der Donnerstag ist ausschlaggebend, zu welchem Jahr die Woche gezählt wird.
     Liegt er im neuen Jahr, ist es die Kalenderwoche 1.
  *  </pre>
  *  @author Dr. Georg Fischer
@@ -80,7 +81,7 @@ public class Day {
         weekDay     = calendar.get(Calendar.DAY_OF_WEEK );
         weekNumber  = calendar.get(Calendar.WEEK_OF_YEAR);
     /*
-        description = (weekDay == Calendar.MONDAY && calendar instanceof DeuChurchCalendar 
+        description = (weekDay == Calendar.MONDAY && calendar instanceof DeuChurchCalendar
                     || weekDay == Calendar.SUNDAY)
                 ? "KW " + Integer.toString(weekNumber)
                 : "";
@@ -102,6 +103,7 @@ public class Day {
     } // Constructor(1)
 
     /** Constructor which sets calendar properties
+     *  @param year  year for the day
      *  @param month month in year: 1-12
      *  @param day day in month: 1-31
      */
@@ -140,7 +142,7 @@ public class Day {
     protected void setAbbreviation(String abbreviation) {
         this.abbreviation = abbreviation;
     } // setAbbreviation
-    
+
     /** Gets the abbreviation of the day
      *  @return abbreviation name of the day to be set
      */
@@ -148,11 +150,11 @@ public class Day {
         return abbreviation;
     } // getAbbreviation
     /*------------------------------*/
-    /** zero or more appointment times and descriptive texts, in lexicographical = chronological order; 
+    /** zero or more appointment times and descriptive texts, in lexicographical = chronological order;
      *  <ul>
-     *  <li>time = "hh:mm" => time with leading zeroes; 
+     *  <li>time = "hh:mm" =&gt; time with leading zeroes;
      *          multiple times must be distinguished by minutes "01", "02" or "06", "07"</li>
-     *  <li>time = " X"    => untimed appointment;
+     *  <li>time = " X"    =&gt; untimed appointment;
      *      multiple events must be distinguished by uppercase letters 'A', 'B' (see {@link #orderCode})</li>
      *  </ul>
      */
@@ -163,9 +165,9 @@ public class Day {
     /** Adds one appointment to the day
      *  @param time in the form
      *  <ul>
-     *  <li>time = "hh:mm" => time with leading zeroes; 
+     *  <li>time = "hh:mm" =&gt; time with leading zeroes;
      *          multiple times must be distinguished by minutes "01", "02" or "06", "07"</li>
-     *  <li>time = " X"    => untimed appointment;
+     *  <li>time = " X"    =&gt; untimed appointment;
      *      multiple events must be distinguished by uppercase letters 'A', 'B' (see {@link #orderCode})</li>
      *  </ul>
      *  @param purpose text describing the purpose of the appointment
@@ -187,9 +189,9 @@ public class Day {
     /** Sets one appointment to the day; any existing setting is overwritten
      *  @param time in the form
      *  <ul>
-     *  <li>time = "hh:mm" => time with leading zeroes; 
+     *  <li>time = "hh:mm" =&gt; time with leading zeroes;
      *      multiple times must be distinguished by minutes "00", "01", "02" or "05", "06", "07"</li>
-     *  <li>time = " X"    => untimed appointment;
+     *  <li>time = " X"    =&gt; untimed appointment;
      *      multiple events must be distinguished by uppercase letters 'A', 'B' (see {@link #orderCode})</li>
      *  </ul>
      *  @param purpose text describing the purpose of the appointment
@@ -199,7 +201,7 @@ public class Day {
     } // setAppointment
 
     /** Gets all appointments of the day, ordered by time, as tuples
-     *  (time, purpose) in a linear string array. 
+     *  (time, purpose) in a linear string array.
      *  The times are rounded down to 5 minute precision.
      *  Any untimed appointments appear before the timed ones,
      *  and for the untimed ones the key returned is the empty string.
@@ -215,7 +217,7 @@ public class Day {
             Iterator<String> iter = appointments.keySet().iterator();
             int ires = 0; // index in result[]
             while (iter.hasNext()) {
-                String key  = iter.next(); 
+                String key  = iter.next();
                 String time = key;
                 if (time.startsWith(" ")) {
                     time = " ";
@@ -253,11 +255,11 @@ public class Day {
      *  <li>a school vacancy</li>
      *  <li>a business leave / furlough / vacancy</li>
      *  </ul>
-     *  and additional attributes like altair parament colors 
+     *  and additional attributes like altair parament colors
      *  (see http://de.wikipedia.org/wiki/Datei:Kirchenjahrev.png).
      *  The individual attributes must be a power of 2, they
-     *  are ORed to a bit pattern.                    
-     *  From these attributes the ultimate color(s) of the entry 
+     *  are ORed to a bit pattern.
+     *  From these attributes the ultimate color(s) of the entry
      *  for the day are determined by {@link #getCellClass} and
      *  by {@link #getCol1Class}
      */
@@ -266,13 +268,13 @@ public class Day {
     public static final int UNDEF    =   0; // day does not exist (e.g. Feb 31st)
     public static final int WORKING  =   1; // Monday thru Friday, not at Saturdays
     public static final int HALFWORK =   2; // e.g. Dec. 24th, Dec. 31st
-    public static final int SATURDAY =   4; // 
-    public static final int SUNDAY   =   8; // 
+    public static final int SATURDAY =   4; //
+    public static final int SUNDAY   =   8; //
     public static final int HOLIDAY  =  16; // political
     public static final int HOLYDAY  =  32; // christian
     public static final int VACANCY  =  64; // no school
     public static final int LEAVE    = 128; // (personal) business holiday
-    // Caution, the bit shifting must be continued below        
+    // Caution, the bit shifting must be continued below
     // bits for altair parament colors
     public static final int RED      = LEAVE   * 2; // c.f. above
     public static final int GREEN    = RED     * 2;
@@ -343,7 +345,8 @@ public class Day {
     } // getCellClass
 
     /** Returns the stylesheet class for the first subcolumn in a cell,
-    *   for example for the altair parament color of this day 
+     *  for example for the altair parament color of this day
+     *  @param defaultColor default for color
      *  @return one of "red", "vio" etc.
      */
     public String getCol1Class(String defaultColor) {
@@ -359,7 +362,7 @@ public class Day {
             result = "wht";
         } else if (this.hasAttributes(Day.GREEN   )) {
             result = "grn";
-        }                       
+        }
         return result;
     } // getCol1Class
     /*------------------------------*/
@@ -395,7 +398,7 @@ public class Day {
      *  <ul>
      *  <li><em><strong>anc</strong>i+-dist</em> - day distance to anchor day i</li>
      *  <li><em><strong>fix=</strong>mm-dd</em> - fixed date: month and day in month</li>
-     *  <li><em><strong>var</strong></em> - the date is locally defined 
+     *  <li><em><strong>var</strong></em> - the date is locally defined
      *      and cannot be determined from the year</li>
      *  <li><em><strong>wrm</strong>w.mm</em> - first weekday w in month mm, where January = 01,
      *      and Sunday = 1 (as in Java), 8 = 2nd Sunday in month, 16 = 3rd Monday etc.</li>
@@ -436,7 +439,7 @@ public class Day {
     /*------------------------------*/
     /** name of the (holy-, sun-) day, key, short code: trin13, xmas2 and so on */
     private String name;
-    
+
     /** Sets the internal, language-independant name of the day
      *  @param name a code like "trin4", "canta"
      */
@@ -453,7 +456,7 @@ public class Day {
     /*------------------------------*/
     /** text appearing when the mouse is placed over the day */
     private String toolTip;
-    
+
     /** Sets text appearing when the mouse is placed over the day
      *  @param toolTip some text
      */
@@ -516,7 +519,7 @@ public class Day {
     } // getYear
     /*------------------------------*/
     /** Gets a date suitable for ICalendar (RFC 5545)
-     *  @return date of the form YYYYMMDD 
+     *  @return date of the form YYYYMMDD
      */
     public String getIcalDate() {
         return    String.valueOf(getYear ())
@@ -524,5 +527,5 @@ public class Day {
                 + String.valueOf(getDay  () + 100).substring(1)
                 ;
     } // getIcalDate
-   
+
 } // Day

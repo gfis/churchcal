@@ -1,5 +1,6 @@
 /*  Class for the properties of a specific calendar year.
     @(#) $Id: BaseCalendar.java 974 2013-01-23 11:38:57Z gfis $   
+    2017-05-29: javadoc 1.8
     2012-02-03: getOption
     2012-01-12: HashMap styleMap, and more processing codes
     2012-01-03: table borders in stylesheet
@@ -206,7 +207,7 @@ public class BaseCalendar extends GregorianCalendar {
     //---------------
     /** Options (properties) set for this calendar.
      *  The following options are currently used:
-     *  <table>
+     *  <table><caption>List of Optins</caption>
      *  <tr><td>explainHeader</td><td>Header text above the color explanation</td></tr>
      *  <tr><td>explainMonth</td><td>(numeric) where to place the color explanation below this month, default 02</td></tr>
      *  <tr><td>title</td><td>Title text for the calendar</td></tr>
@@ -251,7 +252,7 @@ public class BaseCalendar extends GregorianCalendar {
      *  @param name name of the option (case sensitive)
      *  @param value value to be set for the option, or null
      */
-    protected void setOption(String name, String value) {
+    public void setOption(String name, String value) {
         options.put(name, value);
     } // setOption
     /*------------------------------*/
@@ -298,6 +299,7 @@ public class BaseCalendar extends GregorianCalendar {
      *  Successive commas indicate an array element which is left unchanged.
      *  @param text text which optionally contains a bracket with style names
      *  separated by commas.
+     *  @return purpose
      */
     private String extractStyles(String text) {
         String result = text;
@@ -615,6 +617,8 @@ public class BaseCalendar extends GregorianCalendar {
      *  <li>the calendar must have its <em>baseYear</em> set,</li>
      *  <li>the <em>anchor</em> days must have been computed previously.</li>
      *  </ol>
+     *  @param name name of the holy day
+     *  @return Day object
      */
     public Day computeHolyDay(String name) {
         Day result = null;
@@ -840,7 +844,7 @@ public class BaseCalendar extends GregorianCalendar {
      *  <a href="http://tools.ietf.org/html/rfc5545">RFC5545</a>.
      *  Each line starts with a key, a colon, and the value.
      *  Examples:
-     * <pre>
+     *  <pre>
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -887,6 +891,7 @@ DTEND;TZID=US-Eastern:19980312T093000
 LOCATION:1CP Conference Room 4350
 END:VEVENT
 END:VCALENDAR
+     *  </pre>
      *  @param out writer where to print the table
      */
     public void printICalendar(Writer out) {
