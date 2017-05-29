@@ -1,5 +1,6 @@
 /*  Class for the computation of German church calendars
     @(#) $Id: DeuChurchCalendar.java 853 2012-01-06 20:59:01Z gfis $
+ *  2016-10-13: less imports
     2008-04-10: Palmsonntag also for variant="rk"
     2007-04-10: start with WHITE in first week
     2007-02-12: renamed from calwork
@@ -26,9 +27,6 @@ package org.teherba.churchcal;
 import  org.teherba.churchcal.DeuCalendar;
 import  org.teherba.churchcal.Day;
 import  java.util.Calendar;
-import  java.util.Date;
-import  java.util.GregorianCalendar;
-import  java.io.StringWriter;
 
 /** Class defining a German church calendar for some year
  *  with holy days relative to Easter, Advent 1st and Epiphanias,
@@ -63,9 +61,9 @@ public class DeuChurchCalendar extends DeuCalendar {
     /** Initializes the <em>days</em> table with default properties
      */
     public void initialize() {
-		super.initialize();
+        super.initialize();
     } // initialize
-    
+
     /** Sets the names of special days in the year and their properties,
      *  sometimes depending on the current confession (variant).
      */

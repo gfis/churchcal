@@ -1,6 +1,7 @@
 /*  Class for the properties of a specific calendar year.
     @(#) $Id: BaseCalendar.java 974 2013-01-23 11:38:57Z gfis $   
     2017-05-29: javadoc 1.8
+    2016-10-13: less imports
     2012-02-03: getOption
     2012-01-12: HashMap styleMap, and more processing codes
     2012-01-03: table borders in stylesheet
@@ -28,7 +29,6 @@ package org.teherba.churchcal;
 import  org.teherba.churchcal.Customizer;
 import  org.teherba.churchcal.Day;
 import  org.teherba.churchcal.DayMap;
-import  org.teherba.common.URIReader;
 import  org.teherba.numword.BaseSpeller;
 import  org.teherba.numword.SpellerFactory;
 import  java.io.Writer;
@@ -131,7 +131,7 @@ public class BaseCalendar extends GregorianCalendar {
 
     /** Initializes the {@link #days} table and other properties with defaults.
      *  Styles may be overridden by the customization file.
-     *  The CSS classnames must correspond to the values returned by {@link Day#getCellClass} and 
+     *  The CSS classnames must correspond to the values returned by {@link Day#getCellClass} and
      *  {@link Day#getCol1Class}.
      */
     public void initialize() {
@@ -172,7 +172,7 @@ public class BaseCalendar extends GregorianCalendar {
     protected String customization;
 
     /** Gets the customization.
-     *  @return string of lines separated by newlines 
+     *  @return string of lines separated by newlines
      *  containing styles and custom event descriptions
      */
     public String getCustomization() {
@@ -180,7 +180,7 @@ public class BaseCalendar extends GregorianCalendar {
     } // getCustomization
 
     /** Sets the customization.
-     *  @param customization string of lines separated by newlines 
+     *  @param customization string of lines separated by newlines
      *  containing styles and custom event descriptions
      */
     public void setCustomization(String customization) {
@@ -305,7 +305,7 @@ public class BaseCalendar extends GregorianCalendar {
         String result = text;
         int open = text.indexOf("{");
         if (open >= 0) {
-            int close = text.indexOf("}"); 
+            int close = text.indexOf("}");
             if (close > open) {
                 String[] names = text.substring(open + 1, close).split("\\,\\s*"); // the names of the styles in "{ ... }"
                 int nnam = names.length;
@@ -324,7 +324,7 @@ public class BaseCalendar extends GregorianCalendar {
         } // open >= 0;
         return result;
     } // extractStyles
-    
+
     //---------------
     /** Sets the subset of days to be shown
      *  @param subset to be set
@@ -384,21 +384,21 @@ public class BaseCalendar extends GregorianCalendar {
     /** Gets the variant which influences the names of special days
      *  @return variant which was set for this <em>BaseCalendar</em>.
      */
-    public int getVariant() { 
+    public int getVariant() {
         return variant;
     } // getVariant
-    
+
     /** Gets the base year of this calendar
-     *  @return year of the first day 
+     *  @return year of the first day
      */
-    public int getYear() { 
+    public int getYear() {
         return this.get(Calendar.YEAR);
     } // getYear
-    
+
     //----------------------------------------
     // Combined setting of properties of days
     //----------------------------------------
-    /** Gets the number of the day in the year 
+    /** Gets the number of the day in the year
      *  @param month number of month (1-12)
      *  @param day   number of day in month (1-31)
      *  @return 1-366
@@ -408,7 +408,7 @@ public class BaseCalendar extends GregorianCalendar {
         this.set(Calendar.DAY_OF_MONTH  , day);
         return this.get(Calendar.DAY_OF_YEAR);
     } // getDayOfYear
-    
+
     /** Sets the properties of a single day
      *  @param dayOfYear index in <em>days</em> array, 1-366
      *  @param description name of the day
@@ -697,7 +697,7 @@ public class BaseCalendar extends GregorianCalendar {
             out.write("\n<html xmlns=\"http://www.w3.org/1999/xhtml\">");
             out.write("\n<head>");
             out.write("\n<meta http-equiv=\"Content-Type\" content=\"text/html\" />");
-            out.write("\n<meta name=\"robots\" content=\"noindex, nofollow\" />"); 
+            out.write("\n<meta name=\"robots\" content=\"noindex, nofollow\" />");
             out.write("\n<link rel=\"stylesheet\" type=\"text/css\" href=\"stylesheet.css\">");
             out.write("\n<style>");
             Iterator<String> kiter = getStyleIterator();
@@ -837,10 +837,10 @@ public class BaseCalendar extends GregorianCalendar {
     } // printMonthHTML
 
     /** Iterates over all days in the year and
-     *  prints a calendar in iCalendar format (RFC 2455) for the holy days. 
+     *  prints a calendar in iCalendar format (RFC 2455) for the holy days.
      *  iCalendar is an ASCII-based format for the description of entries in
-     *  a calendar or schedule, and is described in 
-     *  <a href="http://www.ietf.org/rfc/rfc2445.txt">RFC 2445</a> and later in 
+     *  a calendar or schedule, and is described in
+     *  <a href="http://www.ietf.org/rfc/rfc2445.txt">RFC 2445</a> and later in
      *  <a href="http://tools.ietf.org/html/rfc5545">RFC5545</a>.
      *  Each line starts with a key, a colon, and the value.
      *  Examples:
@@ -903,7 +903,7 @@ END:VCALENDAR
             int yday = 1;
             while (yday < maxDay) {
                 Day currentDay = days[yday];
-                String description = currentDay.getDescription();       
+                String description = currentDay.getDescription();
                 if (description != null && description.length() > 0) {
                     out.write("BEGIN:VEVENT"                            + crlf);
                     out.write("DTSTART:" + currentDay    .getIcalDate() + crlf);

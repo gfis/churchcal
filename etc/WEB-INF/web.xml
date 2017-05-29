@@ -2,7 +2,7 @@
 <!--
     @(#) $Id: web.xml 883 2012-02-13 07:46:18Z gfis $
     Copyright (c) 2005 Dr. Georg Fischer <punctum@punctum.com>
-    2017-05-29: Servlet 3.0 for Tomcat >= V7; ErrorServlet; CalendarServlet now in package churchcal.web
+    2016-10-11: Servlet 3.0 for Tomcat >= V7; ErrorServlet; ChurchcalServlet now in package web
     2012-02-13: without JSPs, welcome-file servlet
     2012-02-06: /churchcal/servlet
     2005-11-25: copied from checkdig
@@ -33,11 +33,11 @@
 
     <!-- Servlets -->
     <servlet>
-        <servlet-name>CalendarServlet</servlet-name>
-        <servlet-class>org.teherba.churchcal.web.CalendarServlet</servlet-class>
+        <servlet-name>ChurchcalServlet</servlet-name>
+        <servlet-class>org.teherba.churchcal.web.ChurchcalServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CalendarServlet</servlet-name>
+        <servlet-name>ChurchcalServlet</servlet-name>
         <url-pattern>/servlet</url-pattern>
     </servlet-mapping>
 

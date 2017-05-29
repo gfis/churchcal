@@ -3,6 +3,7 @@
     Caution, this file needs UTF-8 encoding (äöüÄÖÜß)!
     @(#) $Id: EasterCalendar.java 969 2012-10-03 19:31:41Z gfis $
     2017-05-29: javadoc 1.8
+ *  2016-10-13: less imports, no try..catch
     2012-10-03: without import DayMap
     2008-04-09: splitted into BaseCalendar and EasterCalendar
     2008-04-03: year 1583..4099, renamed from BaseCalendar
@@ -30,10 +31,7 @@
  */
 package org.teherba.churchcal;
 import  org.teherba.churchcal.BaseCalendar;
-import  org.teherba.churchcal.Day;
 import  java.util.Calendar;
-import  java.util.regex.Matcher;
-import  java.util.regex.Pattern;
 import  org.apache.log4j.Logger;
 
 /** Class storing the properties of a specific sun (christian) calendar year,

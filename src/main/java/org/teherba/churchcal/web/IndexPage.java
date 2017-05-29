@@ -1,6 +1,7 @@
 /*  IndexPage.java - replacement for index.jsp
  *  @(#) $Id: IndexPage.java 882 2012-02-12 21:09:04Z gfis $
  *  2017-05-29: javadoc 1.8
+ *  2016-10-13: less imports; throw exception
  *  2012-02-11, Georg Fischer: copied from index.jsp
  */
 /*
@@ -21,15 +22,10 @@
 package org.teherba.churchcal.web;
 import  org.teherba.churchcal.MainCalendar;
 import  org.teherba.common.web.BasePage;
+import  java.io.IOException;
 import  java.io.PrintWriter;
-import  java.io.Serializable;
-import  java.util.HashMap;
-import  java.util.Iterator;
-import  java.util.Map;
-import  java.util.regex.Pattern;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  javax.servlet.http.HttpSession;
 import  org.apache.log4j.Logger;
 
 /** This class stores the language-specific message texts,
@@ -61,6 +57,7 @@ public class IndexPage {
      *  @param year base year of calendar to be shown
      *  @param month1 starting month
      *  @param infile configuration file
+     *  @throws IOException for IO errors
      */
     public void forward(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage
@@ -71,9 +68,8 @@ public class IndexPage {
             , String year
             , String month1
             , String infile
-            ) {
-        try {
-
+            ) throws IOException {
+        if (true) { // try {
             PrintWriter out = basePage.writeHeader(request, response, language);
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
             out.write("</head>\n<body>\n");
@@ -191,9 +187,10 @@ public class IndexPage {
             }
             out.write(calendar.process(new String[] { lang3, variant, year, "html" }));
             basePage.writeTrailer(language, "quest");
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
-        } finally {
+    */
         }
     } // forward
 

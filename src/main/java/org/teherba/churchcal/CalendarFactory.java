@@ -1,5 +1,6 @@
 /*  Selects the applicable calendar
     @(#) $Id: CalendarFactory.java 882 2012-02-12 21:09:04Z gfis $
+ *  2016-10-13: less imports
     2016-10-03: Locale.setDefault
     2012-02-06: append year to title, remove array of calendars
     2012-01-06: CustomCalendar
@@ -27,13 +28,7 @@ import  org.teherba.churchcal.BaseCalendar;
 import  org.teherba.churchcal.DeuCalendar;
 import  org.teherba.churchcal.DeuChurchCalendar;
 import  org.teherba.churchcal.TARGET2Calendar;
-import  java.io.File;
-import  java.io.PrintWriter;
-import  java.util.Arrays; // asList
-import  java.util.ArrayList; // asList
-import  java.util.Iterator;
 import  java.util.Locale;
-import  java.util.StringTokenizer;
 import  org.apache.log4j.Logger;
 
 /** Determines and instantiates a specialized type of calendar,
@@ -46,10 +41,7 @@ public class CalendarFactory {
     /** log4j logger (category) */
     private Logger log;
 
-    /** No-args Constructor. Used for generation and serialization.
-     *  Constructs all known calendars. Their constructors should
-     *  not contain any heavy-weight initialization code, since they are
-     *  all instantiated here, even if only two of them are really used.
+    /** No-args Constructor.
      */
     public CalendarFactory() {
         log = Logger.getLogger(CalendarFactory.class.getName());

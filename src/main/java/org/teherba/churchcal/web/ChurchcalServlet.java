@@ -1,6 +1,7 @@
 /*  Servlet interface to class WorkCalendar
- *  @(#) $Id: CalendarServlet.java 901 2012-03-10 18:13:36Z gfis $
+ *  @(#) $Id: ChurchcalServlet.java 901 2012-03-10 18:13:36Z gfis $
  *  2017-05-29: javadoc 1.8
+ *  2016-10-13: less imports, no try..catch
  *  2016-10-03: getContentLength was deprecated
  *  2016-09-03: with BasePage; without session
  *  2012-03-08: uploaded files go to java.io.tmpdir
@@ -34,24 +35,20 @@ import  org.teherba.churchcal.web.IndexPage;
 import  org.teherba.churchcal.web.Messages;
 import  org.teherba.common.web.BasePage;
 import  org.teherba.common.web.MetaInfPage;
-import  java.io.BufferedReader;
 import  java.io.File;
 import  java.io.IOException;
 import  java.util.Calendar;
 import  java.util.Iterator;
 import  java.util.List;
-import  javax.servlet.RequestDispatcher;
 import  javax.servlet.ServletConfig;
 import  javax.servlet.ServletException;
 import  javax.servlet.http.HttpServlet;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
 import  org.apache.commons.fileupload.FileItem;
-import  org.apache.commons.fileupload.FileItemFactory;
 import  org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import  org.apache.commons.fileupload.servlet.ServletFileUpload;
 import  org.apache.commons.fileupload.servlet.ServletRequestContext; // for request's length
-import  org.apache.commons.io.output.DeferredFileOutputStream;
 import  org.apache.log4j.Logger;
 
 /** Calculate a specialized calendar with holidays for some year.
@@ -60,8 +57,8 @@ import  org.apache.log4j.Logger;
  *  in that class.
  *  @author Dr. Georg Fischer
  */
-public class CalendarServlet extends HttpServlet {
-    public final static String CVSID = "@(#) $Id: CalendarServlet.java 901 2012-03-10 18:13:36Z gfis $";
+public class ChurchcalServlet extends HttpServlet {
+    public final static String CVSID = "@(#) $Id: ChurchcalServlet.java 901 2012-03-10 18:13:36Z gfis $";
     // public final static long serialVersionUID = 19470629;
 
     /** URL path to this application */
@@ -80,7 +77,7 @@ public class CalendarServlet extends HttpServlet {
      */
     public void init(ServletConfig config) throws ServletException {
         super.init(config); // ???
-        log = Logger.getLogger(CalendarServlet.class.getName());
+        log = Logger.getLogger(ChurchcalServlet.class.getName());
         basePage = new BasePage(APP_NAME);
         Messages.addMessageTexts(basePage);
     } // init
@@ -109,8 +106,9 @@ public class CalendarServlet extends HttpServlet {
     /** Generates the response (HTML page) for an http request
      *  @param request request with header fields
      *  @param response response with writer
+     *  @throws IOException for IO errors
      */
-    public void generateResponse(HttpServletRequest request, HttpServletResponse response) {
+    public void generateResponse(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String sourceEncoding = "ISO-8859-1";
         String targetEncoding = "UTF-8";
         String view           = null;
@@ -182,7 +180,8 @@ public class CalendarServlet extends HttpServlet {
                         , format, lang3, variant, formYear, month1, infile);
 
             } else if (view.equals("show")) { // 2nd request
-                BaseCalendar calendar = (new CalendarFactory()).getCalendar(lang3, variant, tabYear, customization);
+                BaseCalendar calendar = (new CalendarFactory()).getCalendar(lang3
+                        , variant, tabYear, customization);
                 calendar.setOption("month1", month1);
                 tabYear  = calendar.getYear();
 
@@ -247,4 +246,4 @@ public class CalendarServlet extends HttpServlet {
         }
     } // generateResponse
 
-} // CalendarServlet
+} // ChurchcalServlet
