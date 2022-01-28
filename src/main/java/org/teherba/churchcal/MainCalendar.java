@@ -27,7 +27,8 @@ package org.teherba.churchcal;
 import  org.teherba.churchcal.CalendarFactory;
 import  org.teherba.churchcal.BaseCalendar;
 import  java.io.StringWriter;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Implements the commandline interface to various calendar output classes.
  *  @author Dr. Georg Fischer
@@ -44,7 +45,7 @@ public class MainCalendar {
     /** No-args Constructor
      */
     public MainCalendar() {
-        log = Logger.getLogger(MainCalendar.class.getName());
+        log = LogManager.getLogger(MainCalendar.class.getName());
     } // MainCalendar
 
     /** Convenience overlay method with a single string argument instead

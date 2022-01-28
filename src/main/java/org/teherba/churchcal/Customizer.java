@@ -22,7 +22,8 @@
 package org.teherba.churchcal;
 import  org.teherba.churchcal.Day;
 import  org.teherba.churchcal.BaseCalendar;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Read styles and descriptions for the customization of a calendar
  *	from a text file, and attach them to the days array
@@ -38,7 +39,7 @@ public class Customizer {
     /** No-args Constructor
      */
     public Customizer() {
-        log = Logger.getLogger(Customizer.class.getName());
+        log = LogManager.getLogger(Customizer.class.getName());
     } // constructor (0)
 
     /** Initializes some customizable properties of a calendar: styles, explanation

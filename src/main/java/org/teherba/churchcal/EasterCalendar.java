@@ -32,7 +32,8 @@
 package org.teherba.churchcal;
 import  org.teherba.churchcal.BaseCalendar;
 import  java.util.Calendar;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Class storing the properties of a specific sun (christian) calendar year,
  *  with 4 methods for the calculation of Easter Sunday.
@@ -88,7 +89,7 @@ public class EasterCalendar extends BaseCalendar {
      */
     public EasterCalendar(int parmYear, int variant) {
         super(parmYear);
-        log = Logger.getLogger(EasterCalendar.class.getName());
+        log = LogManager.getLogger(EasterCalendar.class.getName());
         setVariant(variant);
         // initialize();
     } // constructor (2)

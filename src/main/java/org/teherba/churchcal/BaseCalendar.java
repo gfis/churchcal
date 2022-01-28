@@ -40,7 +40,8 @@ import  java.util.HashMap;
 import  java.util.Iterator;
 import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Class storing the properties of a specific calendar year,
  *  The years of this calendar are derived from the earth's rotation
@@ -116,7 +117,7 @@ public class BaseCalendar extends GregorianCalendar {
      */
     public BaseCalendar(int year) {
         super(); // 'this' starts with a GregorianCalendar for current date/time
-        log = Logger.getLogger(BaseCalendar.class.getName());
+        log = LogManager.getLogger(BaseCalendar.class.getName());
         options = new HashMap<String, String>(32);
         if (year != 0) {
             this.set(Calendar.YEAR,         year);

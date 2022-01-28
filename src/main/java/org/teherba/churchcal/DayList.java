@@ -23,7 +23,8 @@ package org.teherba.churchcal;
 import  org.teherba.churchcal.Day;
 import  java.util.Calendar;
 import  java.util.GregorianCalendar;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** List (array) of days for the current calendar year plus some surrounding months.
  *  @author Dr. Georg Fischer
@@ -55,7 +56,7 @@ public class DayList {
     /** No-args Constructor 
      */
     public DayList() {
-        log = Logger.getLogger(DayList.class.getName());
+        log = LogManager.getLogger(DayList.class.getName());
         days = new Day[MAX_LIST];
         baseJan0 = MAX_SEGMENT;
         reset();

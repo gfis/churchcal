@@ -49,7 +49,8 @@ import  org.apache.commons.fileupload.FileItem;
 import  org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import  org.apache.commons.fileupload.servlet.ServletFileUpload;
 import  org.apache.commons.fileupload.servlet.ServletRequestContext; // for request's length
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Calculate a specialized calendar with holidays for some year.
  *  This class is the servlet interface to <em>WorkCalendar</em>,
@@ -77,7 +78,7 @@ public class ChurchcalServlet extends HttpServlet {
      */
     public void init(ServletConfig config) throws ServletException {
         super.init(config); // ???
-        log = Logger.getLogger(ChurchcalServlet.class.getName());
+        log = LogManager.getLogger(ChurchcalServlet.class.getName());
         basePage = new BasePage(APP_NAME);
         Messages.addMessageTexts(basePage);
     } // init

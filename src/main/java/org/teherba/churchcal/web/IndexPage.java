@@ -26,7 +26,8 @@ import  java.io.IOException;
 import  java.io.PrintWriter;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** This class stores the language-specific message texts,
  *  and prints the text for some numbered message.
@@ -43,7 +44,7 @@ public class IndexPage {
     /** No-argument constructor
      */
     public IndexPage() {
-        log = Logger.getLogger(IndexPage.class.getName());
+        log = LogManager.getLogger(IndexPage.class.getName());
     } // constructor()
 
     /** Processes an http GET request

@@ -29,7 +29,8 @@ import  org.teherba.churchcal.DeuCalendar;
 import  org.teherba.churchcal.DeuChurchCalendar;
 import  org.teherba.churchcal.TARGET2Calendar;
 import  java.util.Locale;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Determines and instantiates a specialized type of calendar,
  *  initializes all days in it, and sets its description.
@@ -44,7 +45,7 @@ public class CalendarFactory {
     /** No-args Constructor.
      */
     public CalendarFactory() {
-        log = Logger.getLogger(CalendarFactory.class.getName());
+        log = LogManager.getLogger(CalendarFactory.class.getName());
     } // Constructor
 
     /** Gets the applicable calendar for a specified format code.
